@@ -12474,7 +12474,8 @@ begin
           SynMemo.CopyToClipboard;
       end;
     end else begin
-      raise Exception.Create('Unhandled control in clipboard action: '+IfThen(Assigned(CurrentControl), CurrentControl.Name, 'nil'));
+      // AI Edition: nothing to copy from this control (e.g. the result tab strip); beep, do not log an exception
+      Beep;
     end;
   except
     on E:Exception do begin
