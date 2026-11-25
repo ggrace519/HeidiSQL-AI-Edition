@@ -246,4 +246,11 @@ superseded by ADR-010, the Tags point (manually pushed tags) by ADR-011
 - **Not chosen:** making the main form the clipboard widget. The session manager is shown before
   the main window is realized, so copying there would still fail, and destroying a form makes LCL
   fall back to another, possibly unrealized, form.
-- **Remove** the unit once LCL realizes its clipboard widget itself.
+- **Remove** the unit when the fork builds with Lazarus 5.0: Lazarus fixed this in commit 277ae175
+  (issue #42403, in `fixes_5` and 5.0 RC1, not in 4.x) by making the main form the clipboard
+  widget once it exists.
+- **Same reasoning, second workaround:** LCL 4.x `TClipboard.SetAsHtml(Html, PlainText)` writes
+  the plain text with a terminating NUL on every widgetset (Lazarus issue #42606, fixed for 5.0).
+  `StreamToClipboard` (`apphelpers.pas`, short hook) sets the text with `AsText`, which adds the
+  NUL only where the widgetset needs it, and adds HTML only when there is some. Revert to the
+  plain `SetAsHtml` call with Lazarus 5.0.

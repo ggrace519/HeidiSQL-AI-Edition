@@ -4,6 +4,12 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 
 ## [Unreleased]
 
+### Fixed
+- **Copy as / export to clipboard pasted badly outside HeidiSQL:** the copied text ended in a
+  NUL byte, which some applications refuse, and copies without HTML (CSV, JSON, SQL and others)
+  also offered an empty HTML version, which office suites and rich-text editors pasted as nothing.
+  The text is now copied as is, and HTML only when the format has some (HTML table, SQL).
+
 ## [0.3.1] - 2026-11-25
 
 ### Fixed

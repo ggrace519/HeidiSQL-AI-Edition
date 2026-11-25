@@ -16,6 +16,7 @@ This page covers how the fork differs from stock HeidiSQL.
 | Window title and About box | "HeidiSQL AI Edition" | "HeidiSQL" |
 | Update check | Releases of this fork on GitHub, tagged `ai-v<version>` | heidisql.com |
 | Usage statistics | Never sent, option hidden | Optional, sent to heidisql.com |
+| Copy as / export to clipboard | Plain text, plus HTML only when the format has some | Text ends in a NUL byte; CSV and similar offer empty HTML |
 | Clipboard on Linux GTK2 | Copying works from the start | Copying does nothing until the SQL autocomplete popup has been shown once |
 
 The client name reported to database servers (`program_name` / `application_name`) stays
