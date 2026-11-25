@@ -10747,9 +10747,24 @@ end;
 
 
 function TSQLiteQuery.DatabaseName: String;
+var
+  i: Integer;
 begin
-  // TODO
-  Result := Connection.Database;
+  // AI Edition: ask SQLite which schema the result columns come from, like TMySQLQuery does.
+  // Connection.Database is empty when no database is selected, which made editing a query
+  // result look up the table in "".sqlite_master.
+  if FDBObject <> nil then
+    Exit(FDBObject.Database);
+  Result := '';
+  if FCurrentResults <> nil then begin
+    for i:=0 to ColumnCount-1 do begin
+      Result := FConnection.DecodeAPIString(FConnection.Lib.sqlite3_column_database_name(FCurrentResults.Statement, i));
+      if Result <> '' then
+        Break;
+    end;
+  end;
+  if Result = '' then
+    Result := Connection.Database;
 end;
 
 

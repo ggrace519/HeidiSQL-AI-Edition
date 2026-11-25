@@ -16,6 +16,7 @@ This page covers how the fork differs from stock HeidiSQL.
 | Window title and About box | "HeidiSQL AI Edition" | "HeidiSQL" |
 | Update check | Releases of this fork on GitHub, tagged `ai-v<version>` | heidisql.com |
 | Usage statistics | Never sent, option hidden | Optional, sent to heidisql.com |
+| Editing SQLite query results | Works without a database selected in the tree | Fails with "no such table: .sqlite_master" |
 | Clipboard on Linux GTK2 | Copying works from the start | Copying does nothing until the SQL autocomplete popup has been shown once |
 
 The client name reported to database servers (`program_name` / `application_name`) stays

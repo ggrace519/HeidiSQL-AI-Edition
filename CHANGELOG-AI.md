@@ -4,6 +4,12 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 
 ## [Unreleased]
 
+### Fixed
+- **Editing SQLite query results with no database selected:** editing a cell of a query result
+  failed with "no such table: .sqlite_master" and "Could not find table or view .customers" when
+  no database was selected in the tree. The database is now taken from the result's columns, so
+  the change is saved to the right table, also for attached databases.
+
 ## [0.3.1] - 2026-11-25
 
 ### Fixed
