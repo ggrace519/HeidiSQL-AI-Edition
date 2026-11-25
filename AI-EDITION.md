@@ -16,6 +16,8 @@ This page covers how the fork differs from stock HeidiSQL.
 | Window title and About box | "HeidiSQL AI Edition" | "HeidiSQL" |
 | Update check | Releases of this fork on GitHub, tagged `ai-v<version>` | heidisql.com |
 | Usage statistics | Never sent, option hidden | Optional, sent to heidisql.com |
+| Copy as / export to clipboard | Plain text, plus HTML only when the format has some | Text ends in a NUL byte; CSV and similar offer empty HTML |
+| Editing SQLite query results | Works without a database selected in the tree | Fails with "no such table: .sqlite_master" |
 | Clipboard on Linux GTK2 | Copying works from the start | Copying does nothing until the SQL autocomplete popup has been shown once |
 
 The client name reported to database servers (`program_name` / `application_name`) stays
@@ -87,7 +89,8 @@ it and puts the cursor into its prompt box.
 
 1. Select a database (or one of its tables) in the tree. Without one, Generate SQL stays disabled,
    because the model needs the schema to write correct SQL.
-2. Describe the query and press **Generate SQL** or Ctrl+Enter. The answer streams into the panel.
+2. Describe the query and press **Generate SQL** or Ctrl+Enter. The answer streams into the panel,
+   without the model's Markdown code fence lines (```` ```sql ````); the SQL itself is shown as is.
 3. **Insert** puts the SQL at the cursor of the query editor, **Replace** replaces the editor's
    text, **Copy** copies it. Generated SQL is never executed; Ctrl+Z undoes Insert and Replace.
    When an answer has several SQL blocks, a list chooses which one to use.

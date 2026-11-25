@@ -75,7 +75,7 @@ type
 implementation
 
 uses
-  Clipbrd, StrUtils, ButtonPanel, apphelpers, ai.sqlextract, ai.text;
+  Clipbrd, StrUtils, ButtonPanel, apphelpers, ai.sqlextract, ai.text, ai.answerdisplay;
 
 function TAiPanel.S(Value: Integer): Integer;
 begin
@@ -224,7 +224,8 @@ var
   Answer: String;
 begin
   Result := '> ' + Turn.Title + sLineBreak + sLineBreak;
-  Answer := StripThinking(Turn.Answer).Trim;
+  // Plain-text transcript: code fence lines are left out, the SQL inside them stays
+  Answer := AnswerForDisplay(StripThinking(Turn.Answer)).Trim;
   case Turn.State of
     tsStreaming: begin
       if Answer <> '' then
