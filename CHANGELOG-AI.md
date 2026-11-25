@@ -4,6 +4,10 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 
 ## [Unreleased]
 
+### Fixed
+- The AI assistant's answer no longer shows the model's Markdown code fence lines (```` ```sql ````
+  and ```` ``` ````) around the SQL; the SQL is set apart by a blank line instead.
+
 ## [0.3.1] - 2026-11-25
 
 ### Fixed
