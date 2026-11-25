@@ -16,6 +16,7 @@ This page covers how the fork differs from stock HeidiSQL.
 | Window title and About box | "HeidiSQL AI Edition" | "HeidiSQL" |
 | Update check | Releases of this fork on GitHub, tagged `ai-v<version>` | heidisql.com |
 | Usage statistics | Never sent, option hidden | Optional, sent to heidisql.com |
+| Clipboard on Linux GTK2 | Copying works from the start | Copying does nothing until the SQL autocomplete popup has been shown once |
 
 The client name reported to database servers (`program_name` / `application_name`) stays
 "HeidiSQL", and translations are shared with the upstream project.
@@ -121,7 +122,7 @@ sent.
 
 ## Installing
 
-Releases are for Linux, on the [releases page](https://github.com/ggrace519/HeidiSQL/releases/latest).
+Releases are for Linux, on the [releases page](https://github.com/ggrace519/HeidiSQL-AI-Edition/releases/latest).
 Windows and macOS users build from source (see below).
 
 The easiest way is the package for your distribution (GTK2 build, 64-bit x86), included in
@@ -129,7 +130,7 @@ releases after 0.1.0. It is named `heidisql-ai` and can be installed next to a s
 package. The release's install script picks the right one and installs it with apt or dnf:
 
 ```sh
-curl -fsSL https://github.com/ggrace519/HeidiSQL/releases/latest/download/install.sh | sh
+curl -fsSL https://github.com/ggrace519/HeidiSQL-AI-Edition/releases/latest/download/install.sh | sh
 ```
 
 Or download the package yourself and install it, replacing `<version>`:
@@ -151,7 +152,7 @@ after 0.2.0):
 
 ```sh
 sha256sum --check --ignore-missing SHA256SUMS                  # the file is intact
-gh attestation verify heidisql-ai_<version>-1_amd64.deb -R ggrace519/HeidiSQL   # built by this repo's CI
+gh attestation verify heidisql-ai_<version>-1_amd64.deb -R ggrace519/HeidiSQL-AI-Edition   # built by this repo's CI
 ```
 
 Archives are available for GTK2, Qt5, Qt6, and Qt6 for ARM64. The archive has no top folder, so

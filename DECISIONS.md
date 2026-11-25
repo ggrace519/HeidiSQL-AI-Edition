@@ -209,7 +209,7 @@ superseded by ADR-010, the Tags point (manually pushed tags) by ADR-011
 - **Checksums:** every release attaches `SHA256SUMS` for all its assets.
 - **Build provenance:** the release job signs a SLSA provenance attestation for every asset
   (`actions/attest-build-provenance`, pinned by commit, keyless through GitHub's Sigstore
-  instance). `gh attestation verify <file> -R ggrace519/HeidiSQL` proves that a file was built by
+  instance). `gh attestation verify <file> -R ggrace519/HeidiSQL-AI-Edition` proves that a file was built by
   this repository's CI on `lazarus`. No signing key to keep or rotate.
 - **The install script checks before installing:** `install.sh` refuses to install a package
   whose SHA-256 does not match `SHA256SUMS`, or a release without `SHA256SUMS`. That catches
@@ -229,3 +229,21 @@ superseded by ADR-010, the Tags point (manually pushed tags) by ADR-011
 - **Not done:** no GPG signatures on the `.deb`/`.rpm`. Checksums and provenance give the same
   assurance without a key to manage. Signing becomes worth it with an apt or dnf repository,
   where the package managers expect it.
+
+## ADR-013: Work around the LCL GTK2 clipboard widget in the fork
+**Date:** 2026-11-25 · **Status:** accepted
+
+- **Problem:** LCL's GTK2 widget set uses the first form whose handle is created as the widget
+  that owns the clipboard (`TGtk2WSCustomForm.CreateHandle`). In HeidiSQL that is the hidden SQL
+  completion popup, whose GTK window is only realized when the popup is shown.
+  `gtk_selection_owner_set()` refuses unrealized widgets, and LCL ignores that failure, so every
+  copy (CLIPBOARD and PRIMARY) did nothing until autocomplete had opened once.
+- **Decision:** `source/gtk2clipboardowner.pas` creates a `GtkInvisible`, realizes it and makes it
+  LCL's clipboard widget right after `Application.Initialize` (a short hook in `heidisql.lpr`).
+  That is how GTK's own `GtkClipboard` owns selections. The widget is never shown or destroyed,
+  so the clipboard no longer depends on which form exists or is visible. The unit compiles to a
+  no-op on other widget sets.
+- **Not chosen:** making the main form the clipboard widget. The session manager is shown before
+  the main window is realized, so copying there would still fail, and destroying a form makes LCL
+  fall back to another, possibly unrealized, form.
+- **Remove** the unit once LCL realizes its clipboard widget itself.

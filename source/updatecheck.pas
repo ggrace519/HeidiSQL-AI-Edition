@@ -116,6 +116,8 @@ begin
   Http := THttpDownload.Create(Self);
   try
     Http.TimeOut := 5;
+    // AI Edition: GitHub answers a renamed repository's old API URL with a 301; follow it
+    Http.AllowRedirect := True;
     Http.AddHeader('Accept', 'application/vnd.github+json');
     // Raises EHTTPClient on any status other than 200
     ReleasesJson := Http.Get(FORKRELEASESAPI);

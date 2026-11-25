@@ -1,10 +1,10 @@
 #!/bin/sh
 # Installs the heidisql-ai package of the latest HeidiSQL AI Edition release (ADR-010).
-# Usage: curl -fsSL https://github.com/ggrace519/HeidiSQL/releases/latest/download/install.sh | sh
+# Usage: curl -fsSL https://github.com/ggrace519/HeidiSQL-AI-Edition/releases/latest/download/install.sh | sh
 # Uses apt on Debian/Ubuntu and dnf on Fedora. Installs next to a stock HeidiSQL package.
 set -eu
 
-API_URL="${HEIDISQL_AI_RELEASE_API:-https://api.github.com/repos/ggrace519/HeidiSQL/releases/latest}"
+API_URL="${HEIDISQL_AI_RELEASE_API:-https://api.github.com/repos/ggrace519/HeidiSQL-AI-Edition/releases/latest}"
 
 fail() {
 	echo "heidisql-ai install: $*" >&2

@@ -11,7 +11,7 @@ section: database
 priority: optional
 maintainer: HeidiSQL AI Edition maintainers
 vendor: HeidiSQL AI Edition
-homepage: https://github.com/ggrace519/HeidiSQL
+homepage: https://github.com/ggrace519/HeidiSQL-AI-Edition
 license: GPL-2.0-or-later
 description: |-
   SQL client with an AI assistant

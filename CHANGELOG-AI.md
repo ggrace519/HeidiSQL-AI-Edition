@@ -4,6 +4,21 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-25
+
+### Fixed
+- **Repository renamed to HeidiSQL-AI-Edition:** the update check, the one-line install, package
+  metadata, README badges and the `gh attestation verify` instructions now use
+  `ggrace519/HeidiSQL-AI-Edition`. The update check also follows redirects now. Version 0.3.0
+  and older cannot follow GitHub's redirect from the old name, so their update check fails with
+  HTTP status 301: update those installs with the one-line install or the `.deb` / `.rpm` package.
+- **Copying on Linux (GTK2) did nothing:** Ctrl+C in the query results, the Data tab and the SQL
+  editor, and selecting text for middle-click paste, silently left the clipboard unchanged until
+  the SQL autocomplete popup had been shown once. Copying now works from the start. The cause is
+  in the Lazarus GTK2 widget set, so stock HeidiSQL's GTK2 build has it too.
+- Pressing Ctrl+C where there is nothing to copy (for example on the result tabs) now only beeps,
+  instead of also writing an "Unhandled control in clipboard action" error to the SQL log.
+
 ## [0.3.0] - 2026-10-28
 
 ### Added

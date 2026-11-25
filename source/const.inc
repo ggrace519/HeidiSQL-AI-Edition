@@ -22,8 +22,8 @@ const
   APPCONFIGDIRNAME = 'heidisql-ai';
   // Version of the AI Edition, independent of the upstream version it is based on.
   // Releases are tagged with FORKRELEASETAGPREFIX + version, e.g. "ai-v0.1.0".
-  AIEDITIONVERSION = '0.3.0';
-  FORKRELEASESAPI = 'https://api.github.com/repos/ggrace519/HeidiSQL/releases?per_page=50';
+  AIEDITIONVERSION = '0.3.1';
+  FORKRELEASESAPI = 'https://api.github.com/repos/ggrace519/HeidiSQL-AI-Edition/releases?per_page=50';
   FORKRELEASETAGPREFIX = 'ai-v';
   // The AI Edition does not report to the upstream project's usage statistics service
   REPORTUSAGESTATISTICS = False;
