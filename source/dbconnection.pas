@@ -9218,7 +9218,12 @@ begin
             DataTypeStr := 'TEXT';
           end;
         end;
-        FColumnTypes[i] := FConnection.GetDatatypeByName(DataTypeStr, False);
+        // AI Edition: no declared type and NULL in the first row means "unknown" on purpose;
+        // GetDatatypeByName('') would log that as an error on every such result
+        if DataTypeStr.IsEmpty then
+          FColumnTypes[i] := FConnection.Datatypes[0]
+        else
+          FColumnTypes[i] := FConnection.GetDatatypeByName(DataTypeStr, False);
       end;
       if StepResult <> -1 then begin
         FConnection.Lib.sqlite3_reset(LastResult.Statement);

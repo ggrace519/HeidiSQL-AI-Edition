@@ -5,6 +5,8 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 ## [Unreleased]
 
 ### Fixed
+- SQLite: opening a table, or a query whose first row has NULL in a computed column, no longer
+  writes "Unknown datatype "". Fall back to UNKNOWN." as an error to the SQL log.
 - **Copy as / export to clipboard pasted badly outside HeidiSQL:** the copied text ended in a
   NUL byte, which some applications refuse, and copies without HTML (CSV, JSON, SQL and others)
   also offered an empty HTML version, which office suites and rich-text editors pasted as nothing.
