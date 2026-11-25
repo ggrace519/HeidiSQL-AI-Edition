@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: HeidiSQL AI Edition
-Source: https://github.com/ggrace519/HeidiSQL
+Source: https://github.com/ggrace519/HeidiSQL-AI-Edition
 
 Files: *
 Copyright: 2000 - 2025 Ansgar Becker
