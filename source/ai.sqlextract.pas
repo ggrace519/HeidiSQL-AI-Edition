@@ -66,18 +66,6 @@ begin
   Result := False;
 end;
 
-function SplitLines(const Text: String): TStringArray;
-begin
-  Result := Text.Replace(#13#10, #10).Replace(#13, #10).Split([#10]);
-end;
-
-function BacktickRun(const Line: String): Integer;
-begin
-  Result := 0;
-  while (Result < Length(Line)) and (Line[Result + 1] = '`') do
-    Inc(Result);
-end;
-
 function FenceTag(const Line: String; Run: Integer): String;
 begin
   // Info string, e.g. "sql" or "sql title=x": only the first word is the language

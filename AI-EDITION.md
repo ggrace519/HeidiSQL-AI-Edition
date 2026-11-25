@@ -89,7 +89,8 @@ it and puts the cursor into its prompt box.
 
 1. Select a database (or one of its tables) in the tree. Without one, Generate SQL stays disabled,
    because the model needs the schema to write correct SQL.
-2. Describe the query and press **Generate SQL** or Ctrl+Enter. The answer streams into the panel.
+2. Describe the query and press **Generate SQL** or Ctrl+Enter. The answer streams into the panel,
+   without the model's Markdown code fence lines (```` ```sql ````); the SQL itself is shown as is.
 3. **Insert** puts the SQL at the cursor of the query editor, **Replace** replaces the editor's
    text, **Copy** copies it. Generated SQL is never executed; Ctrl+Z undoes Insert and Replace.
    When an answer has several SQL blocks, a list chooses which one to use.

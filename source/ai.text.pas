@@ -24,6 +24,12 @@ function StripThinking(const Answer: String): String;
 // such short strings would garble ordinary words.
 function RedactSecret(const Text, Secret: String): String;
 
+// Splits Text into lines at CR LF, CR or LF.
+function SplitLines(const Text: String): TStringArray;
+
+// Number of backticks Line starts with; a Markdown code fence starts with three or more.
+function BacktickRun(const Line: String): Integer;
+
 const
   MINREDACTLEN = 4;
 
@@ -79,6 +85,18 @@ begin
   Result := Text;
   if Length(Secret) >= MINREDACTLEN then
     Result := StringReplace(Result, Secret, '***', [rfReplaceAll]);
+end;
+
+function SplitLines(const Text: String): TStringArray;
+begin
+  Result := Text.Replace(#13#10, #10).Replace(#13, #10).Split([#10]);
+end;
+
+function BacktickRun(const Line: String): Integer;
+begin
+  Result := 0;
+  while (Result < Length(Line)) and (Line[Result + 1] = '`') do
+    Inc(Result);
 end;
 
 end.

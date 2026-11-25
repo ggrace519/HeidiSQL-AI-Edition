@@ -5,6 +5,8 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 ## [Unreleased]
 
 ### Fixed
+- The AI assistant's answer no longer shows the model's Markdown code fence lines (```` ```sql ````
+  and ```` ``` ````) around the SQL; the SQL is set apart by a blank line instead.
 - SQLite: opening a table, or a query whose first row has NULL in a computed column, no longer
   writes "Unknown datatype "". Fall back to UNKNOWN." as an error to the SQL log.
 - **Copy as / export to clipboard pasted badly outside HeidiSQL:** the copied text ended in a
