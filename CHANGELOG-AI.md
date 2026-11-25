@@ -4,6 +4,13 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 
 ## [Unreleased]
 
+### Fixed
+- **Repository renamed to HeidiSQL-AI-Edition:** the update check, the one-line install, package
+  metadata, README badges and the `gh attestation verify` instructions now use
+  `ggrace519/HeidiSQL-AI-Edition`. The update check also follows redirects now. Version 0.3.0
+  and older cannot follow GitHub's redirect from the old name, so their update check fails with
+  HTTP status 301: update those installs with the one-line install or the `.deb` / `.rpm` package.
+
 ## [0.3.0] - 2026-10-28
 
 ### Added

@@ -688,7 +688,7 @@ jobs:
                 esac
 
             # AI Edition: checksums of every asset and signed build provenance for them (ADR-012).
-            # Verify a download with: gh attestation verify <file> -R ggrace519/HeidiSQL
+            # Verify a download with: gh attestation verify <file> -R ggrace519/HeidiSQL-AI-Edition
             - name: Write SHA256SUMS
               if: steps.recheck.outputs.publish == 'true'
               run: |

@@ -209,7 +209,7 @@ superseded by ADR-010, the Tags point (manually pushed tags) by ADR-011
 - **Checksums:** every release attaches `SHA256SUMS` for all its assets.
 - **Build provenance:** the release job signs a SLSA provenance attestation for every asset
   (`actions/attest-build-provenance`, pinned by commit, keyless through GitHub's Sigstore
-  instance). `gh attestation verify <file> -R ggrace519/HeidiSQL` proves that a file was built by
+  instance). `gh attestation verify <file> -R ggrace519/HeidiSQL-AI-Edition` proves that a file was built by
   this repository's CI on `lazarus`. No signing key to keep or rotate.
 - **The install script checks before installing:** `install.sh` refuses to install a package
   whose SHA-256 does not match `SHA256SUMS`, or a release without `SHA256SUMS`. That catches

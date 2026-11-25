@@ -4,13 +4,13 @@ A fork of [HeidiSQL](https://www.heidisql.com) with an AI assistant that writes,
 optimizes and fixes SQL for the database you are connected to. It uses an AI server you choose:
 a local one such as Ollama, so nothing leaves your computer, or any OpenAI-compatible service.
 
-[![Build Status](https://github.com/ggrace519/HeidiSQL/actions/workflows/lazarus.yaml/badge.svg?branch=lazarus)](https://github.com/ggrace519/HeidiSQL/actions/workflows/lazarus.yaml?query=branch%3Alazarus)
-[![Latest Release](https://img.shields.io/github/v/release/ggrace519/HeidiSQL?label=latest%20release&logo=github)](https://github.com/ggrace519/HeidiSQL/releases/latest)
-[![Linux release](https://img.shields.io/badge/release-Linux-yellow?logo=Linux)](https://github.com/ggrace519/HeidiSQL/releases/latest)
+[![Build Status](https://github.com/ggrace519/HeidiSQL-AI-Edition/actions/workflows/lazarus.yaml/badge.svg?branch=lazarus)](https://github.com/ggrace519/HeidiSQL-AI-Edition/actions/workflows/lazarus.yaml?query=branch%3Alazarus)
+[![Latest Release](https://img.shields.io/github/v/release/ggrace519/HeidiSQL-AI-Edition?label=latest%20release&logo=github)](https://github.com/ggrace519/HeidiSQL-AI-Edition/releases/latest)
+[![Linux release](https://img.shields.io/badge/release-Linux-yellow?logo=Linux)](https://github.com/ggrace519/HeidiSQL-AI-Edition/releases/latest)
 [![Windows from source](https://img.shields.io/badge/from%20source-Windows-blue?logo=Windows)](#building)
 [![macOS from source](https://img.shields.io/badge/from%20source-macOS-black?logo=macOS)](#building)
-[![License](https://img.shields.io/github/license/ggrace519/HeidiSQL?logo=github)](https://github.com/ggrace519/HeidiSQL/blob/lazarus/LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/ggrace519/HeidiSQL/total?logo=github)](https://github.com/ggrace519/HeidiSQL/releases)
+[![License](https://img.shields.io/github/license/ggrace519/HeidiSQL-AI-Edition?logo=github)](https://github.com/ggrace519/HeidiSQL-AI-Edition/blob/lazarus/LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/ggrace519/HeidiSQL-AI-Edition/total?logo=github)](https://github.com/ggrace519/HeidiSQL-AI-Edition/releases)
 
 ![The AI assistant panel on the right has written a query for a SQLite demo shop database](docs/ai-assistant.png)
 
@@ -41,11 +41,11 @@ On Debian, Ubuntu or Fedora (64-bit x86), this installs the latest release's pac
 dnf:
 
 ```sh
-curl -fsSL https://github.com/ggrace519/HeidiSQL/releases/latest/download/install.sh | sh
+curl -fsSL https://github.com/ggrace519/HeidiSQL-AI-Edition/releases/latest/download/install.sh | sh
 ```
 
 Then start **HeidiSQL AI Edition** from the application menu, or run `heidisql-ai`. To read the
-script first, download it from the [releases page](https://github.com/ggrace519/HeidiSQL/releases/latest)
+script first, download it from the [releases page](https://github.com/ggrace519/HeidiSQL-AI-Edition/releases/latest)
 and run `sh install.sh`.
 
 The releases page also has the `.deb` and `.rpm` packages to install yourself, and archives for
