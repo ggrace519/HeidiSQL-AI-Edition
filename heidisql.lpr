@@ -10,7 +10,7 @@ uses
   SysUtils, Dialogs,
   Forms, printer4lazarus, datetimectrls, LCLTranslator, Translations,
   { you can add units after this }
-  main, apphelpers, dbconnection, generic_types, forksettings
+  main, apphelpers, dbconnection, generic_types, forksettings, gtk2clipboardowner
   {$if defined(LINUX) and (defined(LCLQt5) or defined(LCLQt6))}
   , platformtheme
   {$endif};
@@ -93,6 +93,8 @@ begin
   SyncColorSchemeToTheme;
 
   Application.Initialize;
+  // AI Edition: realized clipboard widget for GTK2, see gtk2clipboardowner.pas
+  InstallRealizedClipboardWidget;
 
   // AI Edition: offer to take over sessions and preferences from a stock HeidiSQL, once
   if CopyStockSettings and OfferStockSettingsCopy then begin

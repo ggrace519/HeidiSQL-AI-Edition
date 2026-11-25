@@ -477,6 +477,10 @@ if TargetOS=&apos;win64&apos; then
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="source\gtk2clipboardowner.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="source\forkupdate.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>

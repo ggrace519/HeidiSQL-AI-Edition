@@ -8,6 +8,11 @@ Fork of the HeidiSQL Lazarus/FreePascal port that adds an AI SQL assistant. Read
 - Build: `make build-gtk2` (about 5 s, output `out/gtk2/heidisql`). Also `build-qt5`, `build-qt6`.
 - Run: `./out/gtk2/heidisql`. Settings go to `~/.config/heidisql-ai/`, never to the stock
   `~/.config/heidisql/`. Use `XDG_CONFIG_HOME=<dir>` to run against a throwaway settings folder.
+- GUI checks without touching the desktop: `Xvfb :99 -screen 0 1400x900x24 -nolisten tcp`, then
+  `DISPLAY=:99 XDG_CONFIG_HOME=<dir> ./out/gtk2/heidisql --nettype=10
+  --library=/usr/lib/x86_64-linux-gnu/libsqlite3.so.0 --host=<file.sqlite3>` opens a SQLite file
+  directly (long options only; `-n=10` does not parse, and the library needs its full path). Read the
+  clipboard with `xclip -display :99 -selection clipboard -o`; drive input with XTEST (python-xlib).
 - Translations in a local build: `make copy-locale` copies the .mo files to `out/locale/`, but the
   app looks next to the executable, so also run `ln -sfn ../locale out/gtk2/locale`. Then
   `LANG=de_DE.UTF-8 LANGUAGE=de ./out/gtk2/heidisql` starts in German.
