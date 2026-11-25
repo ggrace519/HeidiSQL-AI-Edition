@@ -1494,7 +1494,18 @@ begin
     HTML.Position := 0;
     HTML.Read(PChar(HTMLContent)^, Length(HTMLContent));
   end;
-  Clipboard.SetAsHtml(HTMLContent, TextContent);
+  // AI Edition: SetAsHtml(HTML, Text) in LCL 4.x adds a NUL byte to the text on every widgetset
+  // (Lazarus issue #42606) and offers an empty HTML format when there is no HTML, which
+  // HTML-aware applications paste as nothing. AsText clears and sets the text the way the
+  // widgetset expects; HTML is only added when there is some.
+  Clipboard.Open;
+  try
+    Clipboard.AsText := TextContent;
+    if HTMLContent <> '' then
+      Clipboard.SetAsHtml(HTMLContent);
+  finally
+    Clipboard.Close;
+  end;
 end;
 
 

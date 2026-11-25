@@ -9218,7 +9218,12 @@ begin
             DataTypeStr := 'TEXT';
           end;
         end;
-        FColumnTypes[i] := FConnection.GetDatatypeByName(DataTypeStr, False);
+        // AI Edition: no declared type and NULL in the first row means "unknown" on purpose;
+        // GetDatatypeByName('') would log that as an error on every such result
+        if DataTypeStr.IsEmpty then
+          FColumnTypes[i] := FConnection.Datatypes[0]
+        else
+          FColumnTypes[i] := FConnection.GetDatatypeByName(DataTypeStr, False);
       end;
       if StepResult <> -1 then begin
         FConnection.Lib.sqlite3_reset(LastResult.Statement);
@@ -10747,9 +10752,24 @@ end;
 
 
 function TSQLiteQuery.DatabaseName: String;
+var
+  i: Integer;
 begin
-  // TODO
-  Result := Connection.Database;
+  // AI Edition: ask SQLite which schema the result columns come from, like TMySQLQuery does.
+  // Connection.Database is empty when no database is selected, which made editing a query
+  // result look up the table in "".sqlite_master.
+  if FDBObject <> nil then
+    Exit(FDBObject.Database);
+  Result := '';
+  if FCurrentResults <> nil then begin
+    for i:=0 to ColumnCount-1 do begin
+      Result := FConnection.DecodeAPIString(FConnection.Lib.sqlite3_column_database_name(FCurrentResults.Statement, i));
+      if Result <> '' then
+        Break;
+    end;
+  end;
+  if Result = '' then
+    Result := Connection.Database;
 end;
 
 
