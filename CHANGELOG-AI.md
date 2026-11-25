@@ -4,6 +4,10 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 
 ## [Unreleased]
 
+### Fixed
+- SQLite: opening a table, or a query whose first row has NULL in a computed column, no longer
+  writes "Unknown datatype "". Fall back to UNKNOWN." as an error to the SQL log.
+
 ## [0.3.1] - 2026-11-25
 
 ### Fixed
