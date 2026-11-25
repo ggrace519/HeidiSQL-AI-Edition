@@ -4,6 +4,8 @@ Changes of the AI Edition fork. Upstream HeidiSQL changes are listed in [CHANGEL
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-25
+
 ### Fixed
 - **Repository renamed to HeidiSQL-AI-Edition:** the update check, the one-line install, package
   metadata, README badges and the `gh attestation verify` instructions now use
